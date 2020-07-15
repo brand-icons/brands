@@ -1,0 +1,14 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M4.5 8.845L11.999 23 0 8.845h4.5zM19.573 8.845L12.001 23 24 8.845h-4.427zM5.753 8.845h12.575L11.999 23 5.753 8.845zM11.999 1l-6.763.724.214 5.706L11.999 1zM11.999 1l6.763.724L18.5 7.3 11.999 1zM24 8.845l-5.236-7.12L19.5 8l4.5.845zM0 8.845l5.236-7.12L4.5 8 0 8.845z"
+    fill="#fff"
+  ></path>
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M11.999 1L6 8h12l-6.001-7z"
+    fill="#fff"
+  ></path>
+</svg>

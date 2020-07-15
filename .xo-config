@@ -1,0 +1,16 @@
+{
+  "overrides": [
+    {
+      "files": "bin/*.js",
+      "rules": {
+        "import/no-extraneous-dependencies": 0
+      }
+    },
+    {
+      "files": "webpack.config.js",
+      "rules": {
+        "import/no-extraneous-dependencies": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M0 12.91V2l9 5.455v3.636L3 7.455v7.272L0 12.91z"
+    fill="#00B0FF"
+  ></path>
+  <path
+    d="M9 7.455L18 2v10.91l-6 3.636-3-1.819 6-3.636V7.455L9 11.09V7.455z"
+    fill="#0081CB"
+  ></path>
+  <path d="M9 14.727v3.637L15 22v-3.636l-6-3.637z" fill="#00B0FF"></path>
+  <path
+    d="M15 22l9-5.454V9.273l-3 1.818v3.636l-6 3.637V22zm6-14.545V3.818L24 2v3.636l-3 1.819z"
+    fill="#0081CB"
+  ></path>
+</svg>
