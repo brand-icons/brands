@@ -13,7 +13,8 @@
     "lint": "xo",
     "import": "./bin/import.sh",
     "export": "./bin/export.sh",
-    "build": "./bin/build.sh"
+    "build": "./bin/build.sh",
+    "build:lib": "npx webpack --mode development && npx webpack --mode production"
   },
   "config": {
     "commitizen": {

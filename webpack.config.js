@@ -21,7 +21,7 @@ module.exports = (env, argv) => {
 			path: path.resolve(__dirname, 'dist'),
 			filename: DEV ? '[name].js' : '[name].min.js',
 			libraryTarget: 'umd',
-			library: 'brand-icons',
+			library: 'brands',
 			// Prevents webpack from referencing `window` in the UMD build
 			// Source: https://git.io/vppgU
 			globalObject: 'typeof self !== \'undefined\' ? self : this'
