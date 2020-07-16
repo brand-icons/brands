@@ -32,7 +32,7 @@ Object.keys(ICON_DIRS).forEach(dir => {
 				}
 			});
 
-		spinner.succeed(`🎉 Optimized ${dir} SVGs`);
+		spinner.succeed(`Optimized ${dir} SVGs`);
 	} catch (error) {
 		spinner.fail(error);
 	}

@@ -9,7 +9,7 @@ import ICONS from '../dist/icons.json';
 import ICON_DIRS from '../util/icon-dirs.json';
 import DEFAULT_ATTRS from '../util/default-attrs.json';
 
-import attrsToString from '../util/helpers/attrsToString';
+import attrsToString from '../util/helpers/attrs-to-string';
 
 const spinner = ora();
 
@@ -30,7 +30,9 @@ Object.keys(ICON_DIRS).forEach(color => {
 	spinner.start(`Building ${color} SVGs...`);
 
 	Object.keys(ICONS).forEach(brand => {
-		const svg = buildSvg(ICONS[brand][color]);
+		const svg = color === 'light' ?
+			buildSvg(ICONS[brand].dark).replace(/fill="#000"/g, 'fill="#fff"') :
+			buildSvg(ICONS[brand][color]);
 
 		try {
 			fs.writeFileSync(path.join(ICON_DIR, `${brand}.svg`), svg);

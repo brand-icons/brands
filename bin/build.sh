@@ -25,5 +25,5 @@ npx babel-node build-svgs.js
 cd ..
 
 # Build JavaScript library
-# npx webpack --output-filename brands.js --mode development
-# npx webpack --output-filename brands.min.js --mode production
+npx webpack --mode development
+npx webpack --mode production

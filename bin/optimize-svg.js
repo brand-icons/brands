@@ -19,7 +19,8 @@ const svgo = color => new Svgo({
 		},
 		{removeViewBox: false},
 		{removeDimensions: true},
-		{removeTitle: true}
+		{removeTitle: true},
+		{removeUnknownsAndDefaults: false}
 	]
 });
 

@@ -2,8 +2,8 @@
   "name": "brand-icons",
   "version": "0.0.0-development",
   "description": "Open source brand icons",
-  "main": "dist/index.js",
-  "unpkg": "dist/index.min.js",
+  "main": "dist/brands.js",
+  "unpkg": "dist/brands.min.js",
   "files": [
     "dist"
   ],
@@ -13,10 +13,7 @@
     "lint": "xo",
     "import": "./bin/import.sh",
     "export": "./bin/export.sh",
-    "build": "./bin/build.sh",
-    "cm": "git-cz",
-    "precommit": "lint-staged",
-    "commitmsg": "commitlint --edit"
+    "build": "./bin/build.sh"
   },
   "config": {
     "commitizen": {
@@ -36,12 +33,13 @@
     "aws-sdk": "^2.713.0",
     "axios": "^0.19.2",
     "babel-cli": "^6.26.0",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-2": "^6.24.1",
     "chalk": "^4.1.0",
     "commitizen": "^4.1.2",
     "coveralls": "^3.1.0",
+    "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.2.0",
     "dotenv": "^8.2.0",
     "eslint": "^7.4.0",
@@ -57,6 +55,7 @@
     "prettier": "^2.0.5",
     "semantic-release": "^17.1.1",
     "svgo": "^1.3.2",
+    "terser-webpack-plugin": "^3.0.6",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "xo": "^0.32.1"
@@ -66,6 +65,5 @@
     "url": "https://github.com/brandicons/brands.git"
   },
   "author": "Ryan DiMascio <ryan@dimasc.io> (https://ryan.dimasc.io)",
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }

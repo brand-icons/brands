@@ -52,12 +52,16 @@ const buildIconObject = dir => {
 				const name = path.basename(file, '.svg');
 				const svg = getFileContents(file, pathname);
 				const contents = getSvgContents(svg);
-				return {name, contents, type: dir};
+				return {
+					name,
+					contents,
+					color: dir
+				};
 			});
 
 		icons.forEach(icon => {
 			const brand = ICONS[icon.name] || {};
-			brand[icon.type] = icon.contents;
+			brand[icon.color] = icon.contents;
 			ICONS[icon.name] = brand;
 		});
 
@@ -65,7 +69,13 @@ const buildIconObject = dir => {
 	});
 };
 
-const icons = Object.keys(ICON_DIRS).map(dir => buildIconObject(dir));
+const icons = Object.keys(ICON_DIRS)
+	.map(dir =>
+		dir === 'light' ?
+			null :
+			buildIconObject(dir)
+	)
+	.filter(Boolean);
 
 Promise.all(icons)
 	.then(() => fs.writeFileSync(ICON_JSON_PATH, JSON.stringify(ICONS)))

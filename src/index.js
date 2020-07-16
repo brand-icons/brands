@@ -1,37 +1,23 @@
-import getAttributes from '../util/helpers/getAttributes';
-import Icon from '../util/helpers/icon';
-import mapColor from '../util/helpers/mapColor';
-import toClass from '../util/helpers/toClass';
+import getAttributes from '../util/helpers/get-attributes';
+import mapColor from '../util/helpers/map-color';
+import toClass from '../util/helpers/to-class';
 
-import ICONS from '../dist/icons.json';
+import * as icons from './icons';
 
 export default (function () {
 	'use strict';
 
 	/**
-     * Public API
-     */
-
-	const icons = {};
-
-	Object.keys(ICONS)
-		.map(icon => new Icon(
-			icon,
-			ICONS[icon]
-		))
-		.forEach(icon => {
-			icons[icon.name] = icon;
-		});
-
-	/**
      * Replaces all elements with a `data-brand-icon`
      * attributes with the respective brand SVG.
-     * @param {object} - An object with format: `{ color: <string>, attributes: <object> }`.
+     * @param {string} color - The SVG color `color|dark|light`.
+	 * @param {object} attributes - The SVG HTML attributes.
+	 * @returns {void}
      */
-	const render = ({
+	const render = (
 		color = 'color',
 		attributes = {}
-	} = {}) => {
+	) => {
 		/* eslint-disable-next-line no-undef */
 		if (typeof document === 'undefined') {
 			throw new TypeError('`brands.render()` only works in a browser environment.');
@@ -55,11 +41,7 @@ export default (function () {
 		);
 	};
 
-	return {icons, render};
-
-	/**
-     * Private API
-     */
+	return {render};
 
 	/**
       * Replaces HTML element with an SVG.
@@ -98,9 +80,9 @@ export default (function () {
 			return;
 		}
 
-		const svg = icons[brand].toSvg({
+		const svg = icons[brand].toSvg(
 			color,
-			attributes: {
+			{
 				...attributes,
 				...elementAttrs,
 				...{class: toClass(
@@ -109,7 +91,7 @@ export default (function () {
 				)
 				}
 			}
-		});
+		);
 
 		element.outerHTML = svg;
 	}

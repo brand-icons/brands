@@ -1,6 +1,6 @@
-import toClass from './toClass';
-import attrsToString from './attrsToString';
-import mapColor from './mapColor';
+import toClass from './to-class';
+import attrsToString from './attrs-to-string';
+import mapColor from './map-color';
 
 import DEFAULT_ATTRS from '../default-attrs.json';
 
@@ -27,19 +27,20 @@ const Icon = (name, contents) => {
 	const svgContents = contents;
 	const defaultAttributes = {
 		...DEFAULT_ATTRS,
-		...{class: `brand-icon ${name}`}
+		...{class: `brand-icon ${name}`},
+		...{height: 24, width: 24}
 	};
-	const defaultColors = new Set(['color', 'dark', 'light']);
+	const defaultColors = new Set(['color', 'dark']);
 
 	/**
      * Covert an icon to SVG.
      * @param {object} params - An object of HTML% attributes
      * @returns {string}
      */
-	const toSvg = ({
+	const toSvg = (
 		color = 'color',
 		attributes = {}
-	} = {}) => {
+	) => {
 		if (typeof color !== 'string') {
 			throw new TypeError('The `color` parameter passed to `brands.toSvg()` must be a string.');
 		}
@@ -54,8 +55,7 @@ const Icon = (name, contents) => {
 			...{class: toClass(
 				defaultAttributes.class,
 				attributes.class
-			)
-			}
+			)}
 		};
 
 		/**
@@ -72,7 +72,12 @@ const Icon = (name, contents) => {
 		return `<svg ${attrsToString(svgAttributes)}>${
 			defaultColors.has(mappedColor) ?
 				svgContents[mappedColor] :
-				customColor(svgContents.dark, color)
+				customColor(
+					svgContents.dark,
+					mappedColor === 'light' ?
+						'#fff' :
+						color
+				)
 		}</svg>`;
 	};
 
