@@ -8,20 +8,20 @@ import DEFAULT_ATTRS from '../util/default-attrs.json';
  * Get a new `Svgo` instance.
  * @param {string} color - SVG color: `color|dark|light`.
  */
-const SVGO = (color) => new Svgo({
-		plugins: [
-			{convertShapeToPath: false},
-			{removeAttrs: {attrs: 'svg:fill:none'}},
-			{
-				// If `color` is anything other that 'color'
-				// then we want to merge the paths.
-				mergePaths: color !== 'color'
-			},
-			{removeViewBox: false},
-			{removeDimensions: true},
-			{removeTitle: true}
-		]
-	});
+const svgo = color => new Svgo({
+	plugins: [
+		{convertShapeToPath: false},
+		{removeAttrs: {attrs: 'svg:fill:none'}},
+		{
+			// If `color` is anything other that 'color'
+			// then we want to merge the paths.
+			mergePaths: color !== 'color'
+		},
+		{removeViewBox: false},
+		{removeDimensions: true},
+		{removeTitle: true}
+	]
+});
 
 /**
  * Process SVG string.
@@ -47,7 +47,7 @@ function optimizeSvg(svg, color) {
  * @param {string} svg - An SVG string.
  * @returns {Promise<string>}
  */
-const minifySvg = (svg, color) => SVGO(color).optimize(svg).then(({data}) => data);
+const minifySvg = (svg, color) => svgo(color).optimize(svg).then(({data}) => data);
 
 /**
  * Set default attibutes on SVG.

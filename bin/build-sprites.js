@@ -62,7 +62,7 @@ Object.keys(ICON_DIRS).forEach(dir => {
 	try {
 		fs.writeFileSync(SPRITE_FILE, buildSprite(icons));
 		spinner.succeed(`Built ${dir} sprite`);
-	} catch(e) {
-		spinner.fail(`Could not build ${dir} sprite: ${e}`);
+	} catch (error) {
+		spinner.fail(`Could not build ${dir} sprite: ${error}`);
 	}
 });

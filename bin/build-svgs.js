@@ -34,8 +34,8 @@ Object.keys(ICON_DIRS).forEach(color => {
 
 		try {
 			fs.writeFileSync(path.join(ICON_DIR, `${brand}.svg`), svg);
-		} catch(e) {
-			chalk.red.bold(`Could not build ${brand} SVG: ${e}`);
+		} catch (error) {
+			chalk.red.bold(`Could not build ${brand} SVG: ${error}`);
 		}
 	});
 

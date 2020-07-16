@@ -5,6 +5,7 @@ require('dotenv').config({path: './../.env'});
 import fs from 'fs';
 import path from 'path';
 import ora from 'ora';
+import chalk from 'chalk';
 import axios from 'axios';
 import * as figma from 'figma-js';
 
@@ -13,6 +14,7 @@ import ICON_DIRS from '../util/icon-dirs.json';
 const spinner = ora();
 const FIGMA_FRAME = 'Icons';
 
+/* eslint-disable-next-line new-cap */
 const figmaClient = figma.Client({
 	personalAccessToken: process.env.FIGMA_API_TOKEN
 });
@@ -165,15 +167,16 @@ const downloadFile = async icon => {
 	);
 
 	icons.forEach((icon, index) => {
-        spinner.start('Downloading icons from Figma...');
+		spinner.start('Downloading icons from Figma...');
 
-        downloadFile(icon)
-            .then(() => {
-                if (index + 1 === icons.length)
-                    spinner.succeed('Downloaded icons from Figma');
-            })
-            .catch(error => {
-                spinner.fail(`Failed to download ${icon.color}/${icon.name} from Figma: ${error}`);
-            });
-    });
+		downloadFile(icon)
+			.then(() => {
+				if (index + 1 === icons.length) {
+					spinner.succeed('Downloaded icons from Figma');
+				}
+			})
+			.catch(error => {
+				spinner.fail(`Failed to download ${icon.color}/${icon.name} from Figma: ${error}`);
+			});
+	});
 })();

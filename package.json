@@ -14,7 +14,9 @@
     "import": "./bin/import.sh",
     "export": "./bin/export.sh",
     "build": "./bin/build.sh",
-    "precommit": "lint-staged"
+    "cm": "git-cz",
+    "precommit": "lint-staged",
+    "commitmsg": "commitlint --edit"
   },
   "config": {
     "commitizen": {
