@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Brand Icons</title>
+    </head>
+    <body>
+
+        <!-- These will get converted to SVG elements -->
+        <i data-brand-icon="twitter" data-brand-color="dark"></i>
+        <div data-brand-icon="codepen" data-brand-color="dark"></div>
+
+        <!-- This will use the Brand Icons CDN (ex. https://cdn.brandicons.org/dark/github) -->
+        <img data-brand-icon="github" data-brand-color="dark"></i>
+
+        <!-- example.js will use the `.toSvg()` method to convert this to an SVG -->
+        <i id="medium-logo"></i>
+
+        <script type="module" src="example.js"></script>
+        <script src="../dist/brands.min.js"></script>
+
+        <script>
+            brands.render();
+        </script>
+    </body>
+</html>
