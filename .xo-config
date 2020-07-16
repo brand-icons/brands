@@ -11,6 +11,13 @@
       "rules": {
         "import/no-extraneous-dependencies": 0
       }
+    },
+    {
+      "files": "examples/*.js",
+      "rules": {
+        "no-undef": 0,
+        "unicorn/prefer-query-selector": 0
+      }
     }
   ]
 }
