@@ -5,6 +5,5 @@ node_modules
 dist
 !test/fixtures/project/node_modules
 test/fixtures/project/node_modules/.cache
-.nyc
 .nyc_output
 coverage

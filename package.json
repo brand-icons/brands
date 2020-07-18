@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "all": "npm-run-all --sequential build lint test coverage",
+    "all": "npm-run-all --sequential build lint test cover",
     "lint": "xo",
     "lint:fix": "xo --fix",
     "test:node": "ava --config .ava.node.config.js",
@@ -17,7 +17,7 @@
     "cover:all": "npm-run-all --sequential cover:browser cover:node",
     "cover:node": "nyc --no-clean npm run test:node",
     "cover:browser": "nyc npm run test:browser",
-    "cover:report": "nyc report --reporter=lcov | coveralls",
+    "cover:report": "nyc report --reporter=text-lcov | coveralls",
     "build": "./bin/build.sh",
     "build:lib": "npm-run-all build:lib:dev build:lib:prod",
     "build:lib:dev": "npx webpack --mode development",
