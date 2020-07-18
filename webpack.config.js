@@ -14,7 +14,10 @@ module.exports = (env, argv) => {
 			hints: false
 		},
 		entry: {
-			brands: path.resolve(__dirname, 'src/index.js'),
+			brands: [
+				path.resolve(__dirname, 'util/polyfills/node-list.js'),
+				path.resolve(__dirname, 'src/index.js')
+			],
 			icons: path.resolve(__dirname, 'src/icons.js')
 		},
 		output: {

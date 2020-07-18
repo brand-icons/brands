@@ -9,7 +9,7 @@ import ICONS from '../dist/icons.json';
 import ICON_DIRS from '../util/icon-dirs.json';
 import DEFAULT_ATTRS from '../util/default-attrs.json';
 
-import attrsToString from '../util/helpers/attrs-to-string';
+import getAttributes from '../util/helpers/get-attributes';
 
 const spinner = ora();
 
@@ -18,7 +18,7 @@ const spinner = ora();
  * @param {string} content - Content inside the SVG.
  * @returns {string}
  */
-const buildSvg = content => `<svg ${attrsToString(DEFAULT_ATTRS)}>${content}</svg>`;
+const buildSvg = content => `<svg ${getAttributes.stringify(DEFAULT_ATTRS)}>${content}</svg>`;
 
 Object.keys(ICON_DIRS).forEach(color => {
 	if (!fs.existsSync(`../dist/icons/${color}`)) {

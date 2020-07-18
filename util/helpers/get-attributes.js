@@ -10,7 +10,7 @@
  * @examples
  * ex.
  */
-(function () {
+export default (function () {
 	'use strict';
 
 	/**
@@ -68,7 +68,7 @@
 
 		// Handles support for Nodes.
 		/* eslint-disable-next-line no-undef */
-		if (typeof element === 'object' && element instanceof Node) {
+		if (typeof element === 'object' && element instanceof window.Node) {
 			return getAttributesFromNode(element);
 		}
 
@@ -86,7 +86,7 @@
      */
 	const stringify = function (attrs) {
 		if (!attrs) {
-			throw new ReferenceError('Cannot stringify ' + attrs);
+			throw new ReferenceError('Cannot stringify undefined.');
 		}
 
 		if (typeof attrs === 'string') {
@@ -114,10 +114,6 @@
      * @returns {Object}
      */
 	function getAttributesFromNode(element) {
-		if (!element) {
-			throw new ReferenceError('Cannot get attributes of undefined');
-		}
-
 		const elementAttrs = element.attributes;
 		const attributes = {};
 		let i;
@@ -136,22 +132,8 @@
 		return attributes;
 	}
 
-	const getAttributes = {
+	return {
 		parse,
 		stringify
 	};
-
-	/* eslint-disable no-undef */
-	if (typeof module !== 'undefined' && module.exports) {
-		getAttributes.default = getAttributes;
-		module.exports = getAttributes;
-	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd) {
-		// Register as 'get-attributes', consistent with npm package name
-		define('get-attributes', [], () => {
-			return getAttributes;
-		});
-	} else {
-		window.getAttributes = getAttributes;
-	}
-	/* eslint-enable no-undef */
 })();

@@ -8,18 +8,66 @@
     "dist"
   ],
   "scripts": {
-    "all": "npm-run-all --sequential build lint test",
-    "test": "nyc ava",
+    "all": "npm-run-all --sequential build lint test coverage",
     "lint": "xo",
-    "import": "./bin/import.sh",
-    "export": "./bin/export.sh",
+    "lint:fix": "xo --fix",
+    "test:node": "ava --config .ava.node.config.js",
+    "test:browser": "ava --config .ava.browser.config.js",
+    "cover": "npm-run-all --sequential cover:browser cover:node cover:report",
+    "cover:all": "npm-run-all --sequential cover:browser cover:node",
+    "cover:node": "nyc --no-clean npm run test:node",
+    "cover:browser": "nyc npm run test:browser",
+    "cover:report": "nyc report --reporter=lcov | coveralls",
     "build": "./bin/build.sh",
-    "build:lib": "npx webpack --mode development && npx webpack --mode production"
+    "build:lib": "npm-run-all build:lib:dev build:lib:prod",
+    "build:lib:dev": "npx webpack --mode development",
+    "build:lib:prod": "npx webpack --mode production",
+    "import": "./bin/import.sh",
+    "export": "./bin/export.sh"
   },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.js": "xo --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint --edit"
+    }
+  },
+  "nyc": {
+    "include": [
+      "src/*.js",
+      "util/helpers/*.js"
+    ],
+    "all": true
+  },
+  "xo": {
+    "overrides": [
+      {
+        "files": "bin/*.js",
+        "rules": {
+          "import/no-extraneous-dependencies": 0
+        }
+      },
+      {
+        "files": "webpack.config.js",
+        "rules": {
+          "import/no-extraneous-dependencies": 0
+        }
+      },
+      {
+        "files": "examples/*.js",
+        "rules": {
+          "no-undef": 0,
+          "unicorn/prefer-query-selector": 0
+        }
+      }
+    ]
   },
   "eslintConfig": {
     "extends": "eslint-config-xo"
@@ -27,6 +75,20 @@
   "eslintIgnore": [
     "test/fixtures"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brand-icons/brands.git"
+  },
+  "keywords": [
+    "brands",
+    "icons"
+  ],
+  "author": "Ryan DiMascio <ryan@dimasc.io> (https://ryan.dimasc.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brand-icons/brands.git/issues"
+  },
+  "homepage": "https://github.com/brand-icons/brands.git#readme",
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
@@ -37,6 +99,7 @@
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "browser-env": "^3.3.0",
     "chalk": "^4.1.0",
     "commitizen": "^4.1.2",
     "coveralls": "^3.1.0",
@@ -46,6 +109,7 @@
     "eslint": "^7.4.0",
     "eslint-config-xo": "^0.32.0",
     "eslint-plugin-ava": "^10.4.0",
+    "esm": "^3.2.25",
     "figma-js": "^1.10.1",
     "husky": "^4.2.5",
     "jsdom": "^16.3.0",
@@ -60,11 +124,5 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "xo": "^0.32.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brandicons/brands.git"
-  },
-  "author": "Ryan DiMascio <ryan@dimasc.io> (https://ryan.dimasc.io)",
-  "license": "MIT"
+  }
 }

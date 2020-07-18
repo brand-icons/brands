@@ -1,5 +1,5 @@
 import toClass from './to-class';
-import attrsToString from './attrs-to-string';
+import getAttributes from './get-attributes';
 import mapColor from './map-color';
 
 import DEFAULT_ATTRS from '../default-attrs.json';
@@ -14,7 +14,7 @@ import DEFAULT_ATTRS from '../default-attrs.json';
  *      light: <string>
  *  }
  */
-const Icon = (name, contents) => {
+const createIcon = (name, contents) => {
 	if (!name || !contents) {
 		throw new ReferenceError('One or more required arguments not supplied to `Icons`.');
 	}
@@ -37,10 +37,7 @@ const Icon = (name, contents) => {
      * @param {object} params - An object of HTML% attributes
      * @returns {string}
      */
-	const toSvg = (
-		color = 'color',
-		attributes = {}
-	) => {
+	const toSvg = (color = 'color', attributes = {}) => {
 		if (typeof color !== 'string') {
 			throw new TypeError('The `color` parameter passed to `brands.toSvg()` must be a string.');
 		}
@@ -66,10 +63,9 @@ const Icon = (name, contents) => {
          */
 		const customColor = (svg, color) => svg.replace(/fill="#000"/g, `fill="${color}"`);
 
-		// Handle empty string.
 		const mappedColor = mapColor(color);
 
-		return `<svg ${attrsToString(svgAttributes)}>${
+		return `<svg ${getAttributes.stringify(svgAttributes)}>${
 			defaultColors.has(mappedColor) ?
 				svgContents[mappedColor] :
 				customColor(
@@ -89,4 +85,4 @@ const Icon = (name, contents) => {
 	};
 };
 
-export default Icon;
+export {createIcon};

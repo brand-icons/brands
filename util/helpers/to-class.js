@@ -26,21 +26,7 @@ const toClass = (...args) => {
      * Add a list of strings to `CLASS_NAMES`.
      * @param {array} classes - A list of classes.
      */
-	const addClasses = classes => {
-		classes.forEach(name => {
-			if (
-
-				/* eslint-disable-next-line no-new-object */
-				classes === new Object(classes) &&
-                !Array.isArray(classes) &&
-                !classes[name]
-			) {
-				return;
-			}
-
-			CLASS_NAMES.add(name);
-		});
-	};
+	const addClasses = classes => classes.forEach(name => CLASS_NAMES.add(name));
 
 	args.forEach(arg => {
 		if (!arg) {
@@ -57,11 +43,13 @@ const toClass = (...args) => {
 			addClasses(arg.flat());
 		} else if (
 			argType === 'object' &&
-
-			/* eslint-disable-next-line no-new-object */
-            arg === new Object(arg)
+            arg === new Object(arg) /* eslint-disable-line no-new-object */
 		) {
-			addClasses(Object.keys(arg));
+			addClasses(
+				Object.keys(arg)
+					.map(a => Boolean(arg[a]) && a)
+					.filter(Boolean)
+			);
 		}
 	});
 

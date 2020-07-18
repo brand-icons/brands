@@ -1,4 +1,6 @@
-import Icon from '../util/helpers/icon';
+/* eslint-disable import/no-anonymous-default-export */
+
+import {createIcon} from '../util/helpers/icon';
 import ICONS from '../dist/icons.json';
 
 const {
@@ -204,7 +206,7 @@ const {
 	zapier,
 	zeplin
 } = Object.keys(ICONS)
-	.map(icon => new Icon(
+	.map(icon => createIcon(
 		icon,
 		ICONS[icon]
 	))
@@ -215,7 +217,7 @@ const {
 		return object;
 	}, {});
 
-export {
+export default {
 	adobe,
 	aftereffects,
 	airbnb,
