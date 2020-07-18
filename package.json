@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "all": "npm-run-all --sequential build lint test cover",
+    "all": "npm-run-all --sequential build lint cover",
     "lint": "xo",
     "lint:fix": "xo --fix",
     "test:node": "ava --config .ava.node.config.js",
