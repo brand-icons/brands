@@ -9,7 +9,7 @@ import ICONS from '../dist/icons.json';
 import ICON_DIRS from '../util/icon-dirs.json';
 import DEFAULT_ATTRS from '../util/default-attrs.json';
 
-import getAttributes from '../util/helpers/get-attributes';
+import getAttributes from 'get-attributes';
 
 const spinner = ora();
 

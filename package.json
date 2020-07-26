@@ -1,5 +1,5 @@
 {
-  "name": "brand-icons",
+  "name": "brands",
   "version": "0.0.0-development",
   "description": "Open source brand icons",
   "main": "dist/brands.js",
