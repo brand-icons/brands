@@ -1,5 +1,5 @@
-import toClass from './to-class';
-import getAttributes from './get-attributes';
+import toClass from 'to-class';
+import getAttributes from 'get-attributes';
 import mapColor from './map-color';
 
 import DEFAULT_ATTRS from '../default-attrs.json';

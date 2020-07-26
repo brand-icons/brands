@@ -1,6 +1,7 @@
-import getAttributes from './get-attributes';
+import toClass from 'to-class';
+import getAttributes from 'get-attributes';
+
 import mapColor from './map-color';
-import toClass from './to-class';
 import {buildUrl} from './build-url';
 
 import icons from '../../src/icons';
