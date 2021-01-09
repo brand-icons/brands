@@ -1,7 +1,7 @@
 {
   "name": "brands",
   "version": "0.0.0-development",
-  "description": "Open source brand icons",
+  "description": "An open source set of SVG brand icons",
   "main": "dist/brands.js",
   "unpkg": "dist/brands.min.js",
   "files": [

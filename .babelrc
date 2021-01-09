@@ -1,13 +1,19 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "targets": {
-          "browsers": ["last 2 versions"]
-        }
-      }
-    ]
-  ],
-  "plugins": ["transform-object-rest-spread"]
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": {
+					"browsers": ["last 2 versions"]
+				}
+			}
+		]
+	],
+	"env": {
+		"development": {
+			"sourceMaps": "inline"
+		}
+	},
+	"comments": false,
+	"sourceMaps": true
 }
